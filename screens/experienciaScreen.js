@@ -20,7 +20,7 @@ export default function ExperienciaScreen() {
                 <YoutubePlayer
                     height={300}
                     play={playing}
-                    videoId={"U23lNFm_J70"}
+                    videoId={"XLYKN_zaVeg"}
                     onChangeState={onStateChange}
                 />
             </View>

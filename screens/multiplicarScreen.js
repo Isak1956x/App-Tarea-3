@@ -10,7 +10,7 @@ export default function MultiplicarScreen() {
     const tabla = esNumeroValido ? multiplicar(val) : [];
 
     return (
-        <ScrollView contentContainerStyle={styles.container}>
+        <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
             <Text style={styles.title}>Tabla de Multiplicar</Text>
             <Text style={styles.subtitle}>Ingresa un número para generar su tabla</Text>
 

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, Text, TextInput, StyleSheet } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { numeroALetras } from '../controllers/controllers';
 
 export default function NumALetrasScreen() {
@@ -10,24 +10,26 @@ export default function NumALetrasScreen() {
     const resultado = esNumeroValido ? numeroALetras(val) : '';
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Número a Letras</Text>
-            <Text style={styles.subtitle}>Convierte un número (1 - 1000) a texto</Text>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <View style={styles.container}>
+                <Text style={styles.title}>Número a Letras</Text>
+                <Text style={styles.subtitle}>Convierte un número (1 - 1000) a texto</Text>
 
-            <TextInput
-                style={styles.input}
-                placeholder="Número (1 - 1000)"
-                placeholderTextColor="#94A3B8"
-                keyboardType="numeric"
-                value={num}
-                onChangeText={setNum}
-            />
+                <TextInput
+                    style={styles.input}
+                    placeholder="Número (1 - 1000)"
+                    placeholderTextColor="#94A3B8"
+                    keyboardType="numeric"
+                    value={num}
+                    onChangeText={setNum}
+                />
 
-            <View style={styles.resultContainer}>
-                <Text style={styles.resultLabel}>En letras:</Text>
-                <Text style={styles.resultValue}>{esNumeroValido ? resultado : '—'}</Text>
+                <View style={styles.resultContainer}>
+                    <Text style={styles.resultLabel}>En letras:</Text>
+                    <Text style={styles.resultValue}>{esNumeroValido ? resultado : '—'}</Text>
+                </View>
             </View>
-        </View>
+        </TouchableWithoutFeedback>
     );
 }
 

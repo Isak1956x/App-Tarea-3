@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, Text, TextInput, StyleSheet } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { sumar } from '../controllers/controllers';
 
 export default function SumadoraScreen() {
@@ -12,32 +12,34 @@ export default function SumadoraScreen() {
     const resultado = tieneValores ? sumar(val1, val2) : '';
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Sumadora</Text>
-            <Text style={styles.subtitle}>Calcula la suma de dos números</Text>
-            
-            <TextInput
-                style={styles.input}
-                placeholder="Número 1"
-                placeholderTextColor="#94A3B8"
-                keyboardType="numeric"
-                value={num1}
-                onChangeText={setNum1}
-            />
-            <TextInput
-                style={styles.input}
-                placeholder="Número 2"
-                placeholderTextColor="#94A3B8"
-                keyboardType="numeric"
-                value={num2}
-                onChangeText={setNum2}
-            />
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <View style={styles.container}>
+                <Text style={styles.title}>Sumadora</Text>
+                <Text style={styles.subtitle}>Calcula la suma de dos números</Text>
+                
+                <TextInput
+                    style={styles.input}
+                    placeholder="Número 1"
+                    placeholderTextColor="#94A3B8"
+                    keyboardType="numeric"
+                    value={num1}
+                    onChangeText={setNum1}
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholder="Número 2"
+                    placeholderTextColor="#94A3B8"
+                    keyboardType="numeric"
+                    value={num2}
+                    onChangeText={setNum2}
+                />
 
-            <View style={styles.resultContainer}>
-                <Text style={styles.resultLabel}>Resultado:</Text>
-                <Text style={styles.resultValue}>{tieneValores ? resultado : '—'}</Text>
+                <View style={styles.resultContainer}>
+                    <Text style={styles.resultLabel}>Resultado:</Text>
+                    <Text style={styles.resultValue}>{tieneValores ? resultado : '—'}</Text>
+                </View>
             </View>
-        </View>
+        </TouchableWithoutFeedback>
     );
 }
 
